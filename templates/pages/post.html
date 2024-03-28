@@ -1,0 +1,37 @@
+{{ define "css" }}
+<link rel="stylesheet" href="./static/css/post.css">
+{{ end }}
+
+{{ define "title" }}
+Post - Example Post
+{{ end }}
+
+{{ define "content" }}
+<article class="post-container post-container--single">
+    <div class="post-header">
+        <div class="post-meta">
+            <time datetime="25-03-2024 16:52" class="post-meta__date date">25 March 2024</time>
+            •
+            <span class="post-list__meta--date date">
+                12 mins
+            </span>
+            •
+            <span class="post-meta__tags"><a href="/tags/#go">go</a>, <a href="/tags/#structure">structure</a>, <a
+                    href="/tags/#architecture">architecture</a></span>
+        </div>
+        <h1 class="post-title">Test Title - Part 1</h1>
+        <div class="main-image-wrapper">
+            <img src="/static/imgs/posts/test-title-part-1/test-title-logo.png" alt="Test Main Image">
+        </div>
+    </div>
+    <section class="post">
+        <a href="/">Test Link!</a> <br /> <br />
+        <p>Hello World!</p>
+        <p>Selected Text</p>
+        <hr />
+        <blockquote>
+            <p>Test Quote</p> <code class="language-plaintext highlighter-green">Code sample</code>
+        </blockquote>
+    </section>
+</article>
+{{ end }}

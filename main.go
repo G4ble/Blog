@@ -12,6 +12,7 @@ import (
 )
 
 func main() {
+	http.HandleFunc("/static/", routing.StaticHandler)
 	http.HandleFunc("/", routing.IndexHandler)
 
 	GracefulListenAndServe(":80", nil)

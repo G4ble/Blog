@@ -93,12 +93,13 @@ body:after {
 
 html,
 body {
-    height: 100%
+    height: 100%;
+    min-height: 100%;
 }
 
 html {
     height: 100%;
-    max-height: 100%
+    max-height: 100%;
 }
 
 body {
@@ -106,7 +107,7 @@ body {
     -webkit-font-smoothing: antialiased;
     color: var(--text-color);
     font-size: 18px;
-    font-weight: 400
+    font-weight: 400;
 }
 
 .main {
@@ -369,7 +370,30 @@ code {
 }
 
 .content-wrapper__inner {
-    padding: 50px 0
+    padding: 50px 0;
+    background-size: 3%;
+    background-position: right top;
+    background-image: url("/static/imgs/background.png");
+    background-repeat: repeat;
+    background-color: rgba(34, 34, 34, 0.95);
+    background-blend-mode: darken;
+    position: relative; 
+}
+
+.content-wrapper__inner-static {
+    padding: 50px 0;
+    background-size: 3%;
+    background-position: right top;
+    background-image: url("../imgs/background.png");
+    background-repeat: repeat;
+    background-color: rgba(34, 34, 34, 0.95);
+    background-blend-mode: darken;
+    position: relative; 
+}
+
+.error-title {
+    font-size: 130px;
+    text-align: center;
 }
 
 footer {
@@ -740,6 +764,10 @@ pre.highlight code,
         font-size: 16px
     }
 
+    .error-title {
+        margin: 120px auto;
+    }
+
     .panel-cover {
         width: 530px;
         height: 100%;
@@ -831,6 +859,14 @@ pre.highlight code,
 
     blockquote {
         padding: 2em
+    }
+
+    .error-container {
+        margin-left: 30%;
+        margin-right: 20%;
+        max-width: 800px;
+        border: 1px solid green !important;
+        display: block
     }
 }
 
@@ -961,6 +997,12 @@ pre.highlight code,
     .navigation__item {
         width: 100%;
         margin: 0 0 .4em 0
+    }
+
+    .error-container {
+        margin-left: 10%;
+        margin-right: 5%;
+        max-width: 800px
     }
 }
 

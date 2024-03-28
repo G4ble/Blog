@@ -2,7 +2,10 @@ package routing
 
 import (
 	"fmt"
+	"mime"
 	"net/http"
+	"os"
+	"path"
 	"text/template"
 )
 
@@ -25,7 +28,16 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	tmpl := template.Must(template.ParseFiles(BASE_HTML, HEADER_HTML, FOOTER_HTML))
+	tmpl := template.Must(template.ParseFiles(BASE_HTML, POST_HTML, HEADER_HTML, FOOTER_HTML))
+
+	err := tmpl.ExecuteTemplate(w, "base", nil)
+	if err != nil {
+		fmt.Println(err)
+	}
+}
+
+func PostlistHandler(w http.ResponseWriter, r *http.Request) {
+	tmpl := template.Must(template.ParseFiles(BASE_HTML, POSTLIST_HTML, HEADER_HTML, FOOTER_HTML))
 
 	err := tmpl.ExecuteTemplate(w, "base", nil)
 	if err != nil {
@@ -34,13 +46,30 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func ErrorHandler(w http.ResponseWriter, r *http.Request) {
-	tmpl := template.Must(template.ParseFiles(BASE_HTML, HEADER_HTML, ERROR_HTML, FOOTER_HTML))
+	tmpl := template.Must(template.ParseFiles(BASE_HTML, ERROR_HTML, HEADER_HTML, FOOTER_HTML))
 
-	header := r.Header.Get("Status")
-	fmt.Println(header)
+	statusHeader := r.Header.Get("Status")
+	fmt.Println("Error Code: ", statusHeader)
 
-	err := tmpl.ExecuteTemplate(w, "base", header)
+	err := tmpl.ExecuteTemplate(w, "base", statusHeader)
 	if err != nil {
 		fmt.Println(err)
+	}
+}
+
+func StaticHandler(w http.ResponseWriter, r *http.Request) {
+	url := r.URL.Path
+	suffix := path.Ext(url)
+	mimeType := mime.TypeByExtension(suffix)
+	w.Header().Set("Content-Type", mimeType)
+	w.Header().Set("Cache-Control", "max-age=10800")
+
+	data, err := os.ReadFile(url[1:])
+	if err != nil {
+		fmt.Print(err)
+	}
+	_, err = w.Write(data)
+	if err != nil {
+		fmt.Print(err)
 	}
 }

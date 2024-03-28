@@ -1,3 +1,4 @@
+{{ define "base" }}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,118 +6,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./static/css/base.css">
-    <link rel="stylesheet" href="./static/css/post.css">
+    {{ template "css" }}
     <link rel="icon" type="image/x-icon" href="./static/imgs/test-fav.ico">
-    <title>Start Page</title>
+    <title>{{ template "title" . }}</title>
 </head>
 
 <body>
     <header id="header" class="panel-cover">
-        <div class="panel-main">
-            <div class="panel-main__inner panel-inverted">
-                <div class="panel-main__content">
-                    <a href="/" title="All posts">
-                        <img class="user-image"
-                            src="https://static-cdn.jtvnw.net/jtv_user_pictures/26cc48c0-4f40-4b48-8e43-17e422d9c8db-profile_image-300x300.png">
-                        <h1 class="panel-cover__title panel-title">g4ble</h1>
-                    </a>
-                    <hr class="panel-cover__divider">
-                    <p class="panel-cover__description">
-                        Blog about my personal projects <br />
-                    </p>
-                    <hr class="panel-cover__divider">
-                    <div class="navigation-wrapper">
-                        <nav class="cover-navigation navigation--social">
-                            <ul class="navigation">
-                                <li class="navigation__item">
-                                    <a href="https://github.com/G4ble" title="g4ble on GitHub">
-                                        <i class="icon icon-social-github"></i>
-                                        <span class="label">GitHub</span>
-                                    </a>
-                                </li>
-                                <li class="navigation__item">
-                                    <a href="mailto:usperling35@gmail.com" title="Email usperling35@gmail.com">
-                                        <i class="icon icon-mail"></i>
-                                        <span class="label">Email</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
+        {{ template "header" }}
     </header>
     <div class="content-wrapper">
         <div class="content-wrapper__inner">
-            <article class="post-container post-container--single">
-                <div class="post-header">
-                    <div class="post-meta">
-                        <time datetime="25-03-2024 16:52" class="post-meta__date date">25 March 2024</time>
-                        •
-                        <span class="post-list__meta--date date">
-                            12 mins
-                        </span>
-                        •
-                        <span class="post-meta__tags"><a href="/tags/#go">go</a>, <a
-                                href="/tags/#structure">structure</a>, <a
-                                href="/tags/#architecture">architecture</a></span>
-                    </div>
-                    <h1 class="post-title">Test Title - Part 1</h1>
-                    <div class="main-image-wrapper">
-                        <img src="./static/imgs/posts/test-title-part-1/test-title-logo.png" alt="Test Main Image">
-                    </div>
-                </div>
-                <section class="post">
-                    <a href="/">Test Link!</a> <br /> <br />
-                    <p>Hello World!</p>
-                    <p>Selected Text</p>
-                    <hr />
-                    <blockquote>
-                        <p>Test Quote</p> <code class="language-plaintext highlighter-green">Code sample</code>
-                    </blockquote>
-                </section>
-            </article>
+            {{ template "content" . }}
         </div>
-        <footer>
-            <div class="container">
-                <div class="footer-columns">
-                    <ul class="footer-links">
-                        <li>
-                            <h4>Pages</h4>
-                        </li>
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/tags">Tags</a></li>
-                        <li><a href="/categories">Categories</a></li>
-                    </ul>
-                    <ul class="footer-links">
-                        <li>
-                            <h4 id="find">Find Me</h4>
-                        </li>
-                        <li>
-                            <a href="https://github.com/G4ble" title="g4ble on GitHub">
-                                <i class="icon icon-social-github"></i>
-                                GitHub
-                            </a>
-                        </li>
-                        <li>
-                            <a href="mailto:usperling35@gmail.com" title="Email usperling35@gmail.com">
-                                <i class="icon icon-mail"></i>
-                                Email
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="legal-line">
-                <p class="container">
-                    © 2024
-                    •
-                    Udo Sperling
-                </p>
-            </div>
-        </footer>
+        {{ template "footer" }}
     </div>
 </body>
 
 </html>
+{{ end }}

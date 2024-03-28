@@ -1,0 +1,16 @@
+{{ define "css" }}
+{{ end }}
+
+{{ define "title" }}
+Error Page
+{{ end }}
+
+{{ define "content" }}
+    {{ if eq . "404" }}
+    <h1 class="error-title">404 <br /> Page not found</h1>
+    {{ else if eq . "401" }}
+    <h1 class="error-title">401 <br /> Unauthorized</h1>
+    {{ else }}
+    <h1 class="error-title">Something <br /> went wrong...</h1>
+    {{ end }}
+{{ end }}
