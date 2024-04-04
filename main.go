@@ -15,7 +15,7 @@ func main() {
 	http.HandleFunc("/static/", routing.StaticHandler)
 	http.HandleFunc("/", routing.IndexHandler)
 
-	GracefulListenAndServe(":80", nil)
+	GracefulListenAndServe(":900", nil)
 }
 
 func GracefulListenAndServe(addr string, handler http.Handler) {
