@@ -9,16 +9,16 @@ import (
 	"text/template"
 )
 
-const BASE_PAGE_PATH = "templates/pages/"
-const BASE_PARTS_PATH = "templates/parts/"
+const BasePagePath = "templates/pages/"
+const BasePartsPath = "templates/parts/"
 
-const BASE_HTML = BASE_PARTS_PATH + "base.html"
-const HEADER_HTML = BASE_PARTS_PATH + "header.html"
-const FOOTER_HTML = BASE_PARTS_PATH + "footer.html"
+const BaseHTML = BasePartsPath + "base.html"
+const HeaderHTML = BasePartsPath + "header.html"
+const FooterHTML = BasePartsPath + "footer.html"
 
-const POST_HTML = BASE_PAGE_PATH + "post.html"
-const POSTLIST_HTML = BASE_PAGE_PATH + "postlist.html"
-const ERROR_HTML = BASE_PAGE_PATH + "error.html"
+const PostHTML = BasePagePath + "post.html"
+const PostlistHTML = BasePagePath + "postlist.html"
+const ErrorHTML = BasePagePath + "error.html"
 
 func IndexHandler(w http.ResponseWriter, r *http.Request) {
 	// all paths fall back to "/", that's why we handle all 404 status codes like this
@@ -28,7 +28,7 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	tmpl := template.Must(template.ParseFiles(BASE_HTML, POST_HTML, HEADER_HTML, FOOTER_HTML))
+	tmpl := template.Must(template.ParseFiles(BaseHTML, PostHTML, HeaderHTML, FooterHTML))
 
 	err := tmpl.ExecuteTemplate(w, "base", nil)
 	if err != nil {
@@ -37,7 +37,7 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func PostlistHandler(w http.ResponseWriter, r *http.Request) {
-	tmpl := template.Must(template.ParseFiles(BASE_HTML, POSTLIST_HTML, HEADER_HTML, FOOTER_HTML))
+	tmpl := template.Must(template.ParseFiles(BaseHTML, PostlistHTML, HeaderHTML, FooterHTML))
 
 	err := tmpl.ExecuteTemplate(w, "base", nil)
 	if err != nil {
@@ -46,7 +46,7 @@ func PostlistHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func ErrorHandler(w http.ResponseWriter, r *http.Request) {
-	tmpl := template.Must(template.ParseFiles(BASE_HTML, ERROR_HTML, HEADER_HTML, FOOTER_HTML))
+	tmpl := template.Must(template.ParseFiles(BaseHTML, ErrorHTML, HeaderHTML, FooterHTML))
 
 	statusHeader := r.Header.Get("Status")
 	fmt.Println("Error Code: ", statusHeader)
