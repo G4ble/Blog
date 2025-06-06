@@ -35,6 +35,7 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	tmpl := template.Must(template.ParseFiles(BaseHTML, PostHTML, HeaderHTML, FooterHTML))
+	fmt.Println("Rendering at: ", r.URL.Path)
 
 	err := tmpl.ExecuteTemplate(w, "base", nil)
 	if err != nil {
