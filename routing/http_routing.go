@@ -68,6 +68,7 @@ func ErrorHandler(w http.ResponseWriter, r *http.Request) {
 
 	statusHeader := r.Header.Get("Status")
 	fmt.Println("Error Code: ", statusHeader)
+	fmt.Println("Error at: ", r.URL.Path)
 
 	err := tmpl.ExecuteTemplate(w, "base", statusHeader)
 	if err != nil {
