@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"errors"
+	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -64,6 +65,7 @@ func GracefulListenAndServeTLS(addr string, handler http.Handler, certificate st
 		close(idleConnsClosed)
 	}()
 
+	fmt.Println("Starting HTTPS Server...")
 	err := server.ListenAndServeTLS(certificate, key)
 	if !errors.Is(err, http.ErrServerClosed) {
 		// Error starting or closing listener
