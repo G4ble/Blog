@@ -26,10 +26,9 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path == "/game" {
 		GameHandler(w, r)
 		return
-	}
-
-	if r.URL.Path != "/" {
+	} else if r.URL.Path != "/" {
 		r.Header.Set("Status", fmt.Sprint(http.StatusNotFound))
+		fmt.Println(r.URL.Path)
 		ErrorHandler(w, r)
 		return
 	}
