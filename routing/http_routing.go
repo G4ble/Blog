@@ -57,6 +57,8 @@ func GameHandler(w http.ResponseWriter, r *http.Request) {
 func PostlistHandler(w http.ResponseWriter, r *http.Request) {
 	tmpl := template.Must(template.ParseFiles(BaseHTML, PostlistHTML, HeaderHTML, FooterHTML))
 
+	fmt.Println("Error at Poslist/: ", r.URL.Path)
+
 	err := tmpl.ExecuteTemplate(w, "base", nil)
 	if err != nil {
 		fmt.Println(err)
