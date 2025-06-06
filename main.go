@@ -15,7 +15,7 @@ func main() {
 	http.HandleFunc("/static/", routing.StaticHandler)
 	http.HandleFunc("/game/", routing.GameHandler)
 	http.HandleFunc("/post", routing.PostlistHandler)
-	http.HandleFunc("/*", routing.IndexHandler)
+	http.HandleFunc("/", routing.IndexHandler)
 
 	GracefulListenAndServe(":900", nil)
 }
