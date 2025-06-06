@@ -14,6 +14,7 @@ import (
 func main() {
 	http.HandleFunc("/static/", routing.StaticHandler)
 	http.HandleFunc("/", routing.IndexHandler)
+	http.HandleFunc("/game", routing.GameHandler)
 
 	GracefulListenAndServe(":900", nil)
 }

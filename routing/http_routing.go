@@ -18,6 +18,7 @@ const FooterHTML = BasePartsPath + "footer.html"
 
 const PostHTML = BasePagePath + "post.html"
 const PostlistHTML = BasePagePath + "postlist.html"
+const GametHTML = BasePagePath + "game.html"
 const ErrorHTML = BasePagePath + "error.html"
 
 func IndexHandler(w http.ResponseWriter, r *http.Request) {
@@ -29,6 +30,15 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	tmpl := template.Must(template.ParseFiles(BaseHTML, PostHTML, HeaderHTML, FooterHTML))
+
+	err := tmpl.ExecuteTemplate(w, "base", nil)
+	if err != nil {
+		fmt.Println(err)
+	}
+}
+
+func GameHandler(w http.ResponseWriter, r *http.Request) {
+	tmpl := template.Must(template.ParseFiles(BaseHTML, GametHTML, HeaderHTML, FooterHTML))
 
 	err := tmpl.ExecuteTemplate(w, "base", nil)
 	if err != nil {

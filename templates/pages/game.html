@@ -1,0 +1,30 @@
+{{ define "css" }}
+<link rel="stylesheet" href="/static/css/post.css">
+{{ end }}
+
+{{ define "title" }}
+Post - Example Post
+{{ end }}
+
+{{ define "content" }}
+<article class="post-container post-container--single">
+    <div class="post-header">
+        <div class="post-meta">
+            <time datetime="25-03-2024 16:52" class="post-meta__date date">25 March 2024</time>
+            •
+            <span class="post-list__meta--date date">
+                12 mins
+            </span>
+            •
+            <span class="post-meta__tags"><a href="/tags/#go">go</a>, <a href="/tags/#godot">godot</a>, <a
+                    href="/tags/#games">games</a></span>
+        </div>
+        <h1 class="post-title">Test Game</h1>
+        <blockquote>
+            <iframe frameborder="0" src="https://itch.io/embed-upload/12901328?color=0ea17e" allowfullscreen=""
+                width="1152" height="668"><a href="https://g4ble.itch.io/ncrw">Play Nothing Can Roll Wrong on
+                    itch.io</a></iframe>
+        </blockquote>
+    </div>
+</article>
+{{ end }}
