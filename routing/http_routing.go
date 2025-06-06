@@ -25,6 +25,7 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) {
 	// all paths fall back to "/", that's why we handle all 404 status codes like this
 	if r.URL.Path == "/game" {
 		GameHandler(w, r)
+		fmt.Println("Try to render game site from index handler...")
 		return
 	} else if r.URL.Path != "/" {
 		r.Header.Set("Status", fmt.Sprint(http.StatusNotFound))
