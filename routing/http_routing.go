@@ -29,7 +29,6 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	} else if r.URL.Path != "/" {
 		r.Header.Set("Status", fmt.Sprint(http.StatusNotFound))
-		r.Response.Header.Add("Message", "Routing to default 404")
 		fmt.Println(r.URL.Path)
 		ErrorHandler(w, r)
 		return
